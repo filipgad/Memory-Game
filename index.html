@@ -6,7 +6,29 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Hello world!</h1>
+    <div id="container">
+
+        <!-- GAME MENU -->
+        <div class="slide-start" id="pageStart">
+            <h1>Memory Game</h1>
+            <a href="#pageGame" class="button">Start game</a>
+        </div>
+
+        <!-- GAME BOARD -->
+        <div class="slide-game" id="pageGame">
+            <div id="gameBoard"></div>
+            <div class="score"></div>
+            <a href="#pageGame" class="button">Restart game</a>
+        </div>
+
+        <!-- GAME SCORE -->
+        <div class="slide-score" id="pageScore">
+            <a href="#pageGame" class="button">New game</a>
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/out.js"></script>
 </body>
 </html>
