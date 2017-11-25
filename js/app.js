@@ -12,10 +12,14 @@ $(document).ready(function() {
 
       makeBoard() {
 
+        // put card number into array
         for(let i=0; i<this.numberOfCards; i++) {
           this.boardOfCards.push(Math.floor(i/2));
         }
 
+        console.log(this.boardOfCards);
+
+        // shuffle cards numbers
         for(let i=this.numberOfCards-1; i>0; i--) {
           var swap = Math.floor(Math.random()*i);
           var temp = this.boardOfCards[i];
@@ -23,6 +27,9 @@ $(document).ready(function() {
           this.boardOfCards[swap] = temp;
         }
 
+        console.log(this.boardOfCards);
+
+        // create cards and put into game board
         for(let i=0; i<this.numberOfCards; i++) {
           var card = $('<div class=card></div>');
           card.addClass('card-type-'+this.boardOfCards[i]);
@@ -31,7 +38,7 @@ $(document).ready(function() {
           card.text(`${this.boardOfCards[i]+1}`);
           this.gameBoard.append(card);
         }
-        
+
       }
 
     }
