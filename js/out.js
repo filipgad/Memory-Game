@@ -70,7 +70,55 @@
 "use strict";
 
 
-console.log('Hello world!');
+$(document).ready(function () {
+  var _this = this;
+
+  var numberOfCards = 20;
+  var boardOfCards = [];
+  var activeCards = [];
+  var canClick = true;
+  var failedTries = 0;
+  var correctPairs = 0;
+  var cardsImages = ['boston.png', 'chicago.png', 'cleveland.png', 'houston.png', 'la_lakers.png', 'miami.png', 'nba.png', 'oklahoma.png', 'san_antonio.png', 'warriors.png', 'washington.png'];
+
+  startGame = function startGame() {
+    boardOfCards = [];
+    activeCards = [];
+    canClick = true;
+    failedTries = 0;
+    correctPairs = 0;
+
+    var gameBoard = $('#gameBoard').empty(); // clean game board
+
+    // put card number into array
+    for (var i = 0; i < numberOfCards; i++) {
+      boardOfCards.push(Math.floor(i / 2));
+    }
+
+    console.log(boardOfCards);
+
+    // shuffle cards numbers
+    for (var _i = numberOfCards - 1; _i > 0; _i--) {
+      var swap = Math.floor(Math.random() * _i);
+      var temp = boardOfCards[_i];
+      boardOfCards[_i] = boardOfCards[swap];
+      boardOfCards[swap] = temp;
+    }
+
+    console.log(boardOfCards);
+
+    // create cards and put into game board
+    for (var _i2 = 0; _i2 < numberOfCards; _i2++) {
+      var card = $('<div>');
+      card.addClass('card');
+      card.addClass('card-type-' + boardOfCards[_i2]);
+      card.attr('data-cardType', boardOfCards[_i2]);
+      card.attr('data-index', _i2);
+
+      _this.gameBoard.append(card);
+    }
+  };
+});
 
 /***/ })
 /******/ ]);
