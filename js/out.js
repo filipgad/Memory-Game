@@ -71,53 +71,118 @@
 
 
 $(document).ready(function () {
-  var _this = this;
 
-  var numberOfCards = 20;
-  var boardOfCards = [];
-  var activeCards = [];
-  var canClick = true;
-  var failedTries = 0;
-  var correctPairs = 0;
-  var cardsImages = ['boston.png', 'chicago.png', 'cleveland.png', 'houston.png', 'la_lakers.png', 'miami.png', 'nba.png', 'oklahoma.png', 'san_antonio.png', 'warriors.png', 'washington.png'];
+    var numberOfCards = 20;
+    var boardOfCards = [];
+    var activeCards = [];
+    var canClick = true;
+    var tries = 0;
+    var correctPairs = 0;
 
-  startGame = function startGame() {
-    boardOfCards = [];
-    activeCards = [];
-    canClick = true;
-    failedTries = 0;
-    correctPairs = 0;
+    // function to start game
+    var startGame = function startGame() {
+        boardOfCards = [];
+        activeCards = [];
+        canClick = true;
+        tries = 0;
+        correctPairs = 0;
 
-    var gameBoard = $('#gameBoard').empty(); // clean game board
+        var gameBoard = $('#gameBoard').empty(); // clean game board
 
-    // put card number into array
-    for (var i = 0; i < numberOfCards; i++) {
-      boardOfCards.push(Math.floor(i / 2));
-    }
+        // put card number into array
+        for (var i = 0; i < numberOfCards; i++) {
+            boardOfCards.push(Math.floor(i / 2));
+        }
 
-    console.log(boardOfCards);
+        // shuffle cards numbers
+        for (var _i = numberOfCards - 1; _i > 0; _i--) {
+            var swap = Math.floor(Math.random() * _i);
+            var temp = boardOfCards[_i];
+            boardOfCards[_i] = boardOfCards[swap];
+            boardOfCards[swap] = temp;
+        }
 
-    // shuffle cards numbers
-    for (var _i = numberOfCards - 1; _i > 0; _i--) {
-      var swap = Math.floor(Math.random() * _i);
-      var temp = boardOfCards[_i];
-      boardOfCards[_i] = boardOfCards[swap];
-      boardOfCards[swap] = temp;
-    }
+        // create cards and put into game board
+        for (var _i2 = 0; _i2 < numberOfCards; _i2++) {
+            var card = $('<div>');
+            card.addClass('card');
+            card.addClass('front');
+            card.addClass('card-type-' + boardOfCards[_i2]);
+            card.attr('data-card-type', boardOfCards[_i2]);
+            card.attr('data-index', _i2);
 
-    console.log(boardOfCards);
+            gameBoard.append(card);
+        }
 
-    // create cards and put into game board
-    for (var _i2 = 0; _i2 < numberOfCards; _i2++) {
-      var card = $('<div>');
-      card.addClass('card');
-      card.addClass('card-type-' + boardOfCards[_i2]);
-      card.attr('data-cardType', boardOfCards[_i2]);
-      card.attr('data-index', _i2);
+        // event on clicked card
+        $('.card').on('click', function () {
+            clickedCard($(this));
+        });
+    };
 
-      _this.gameBoard.append(card);
-    }
-  };
+    // compare clicked cards
+    var clickedCard = function clickedCard(card) {
+        if (canClick) {
+
+            if (!activeCards[0] || activeCards[0].data('index') != card.data('index')) {
+                activeCards.push(card);
+                card.removeClass('front');
+                card.addClass('back');
+            }
+
+            if (activeCards.length === 2) {
+                canClick = false;
+                if (activeCards[0].data('card-type') == activeCards[1].data('card-type')) {
+                    setTimeout(function () {
+                        deleteCorrectPair();
+                    }, 1000);
+                } else {
+                    setTimeout(function () {
+                        resetCards();
+                    }, 1000);
+                }
+
+                tries++;
+            }
+        }
+    };
+
+    // remove correct pair
+    var deleteCorrectPair = function deleteCorrectPair() {
+        activeCards[0].fadeOut(function () {
+            $(this).remove();
+        });
+        activeCards[1].fadeOut(function () {
+            $(this).remove();
+
+            correctPairs++;
+            if (correctPairs >= numberOfCards / 2) {
+                gameOver();
+            }
+
+            activeCards = new Array();
+            canClick = true;
+        });
+    };
+
+    // reset wrong pair
+    var resetCards = function resetCards() {
+        activeCards[0].removeClass('back');
+        activeCards[0].addClass('front');
+
+        activeCards[1].removeClass('back');
+        activeCards[1].addClass('front');
+
+        activeCards = new Array();
+        canClick = true;
+    };
+
+    // score information
+    var gameOver = function gameOver() {
+        console.log('koniec gry');
+    };
+
+    startGame();
 });
 
 /***/ })
