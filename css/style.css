@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Baloo+Bhaijaan);@charset "UTF-8";
+#pageStart, #pageGame, #pageScore {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #CFCFCF;
+  color: #0D4F8B;
+  font-family: 'Baloo Bhaijaan', cursive; }
+
+[class^=slide-] {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: -300%;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s; }
+
+[class^=slide-].show {
+  z-index: 2;
+  top: 0; }
+
+.slide-start {
+  top: 0;
+  /* widoczny od początku */ }
+
+a {
+  text-decoration: none;
+  color: #FF8000; }
+
+/* GAME MENU */
+#pageStart .basketballBoard {
+  width: 70vw;
+  height: 80vh;
+  border: 20px solid #000;
+  position: relative;
+  background-color: #EBEBEB; }
+  #pageStart .basketballBoard h1 {
+    font-size: 700%;
+    text-align: center;
+    margin-top: 50px; }
+  #pageStart .basketballBoard .ballButton {
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    background: url(../images/ball.png) center center/contain no-repeat;
+    z-index: 2;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #pageStart .basketballBoard .ballButton span {
+      font-size: 300%;
+      color: #777887; }
+  #pageStart .basketballBoard .smallBoard {
+    width: 25vw;
+    height: 25vh;
+    border: 20px solid #000;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    z-index: 1; }
+
+/* GAME BOARD */
+/* GAME SCORE */
+.card {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red; }
+
+.front {
+  background: url(../images/nba.png) center center/contain no-repeat; }
+
+.back {
+  background-color: hotpink; }
