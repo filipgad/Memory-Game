@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>Memory Game</title>
     <link rel="stylesheet" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div id="container">
 
         <!-- GAME MENU -->
         <div class="slide-start" id="pageStart">
-            <h1>Memory Game</h1>
-            <a href="#pageGame" class="button">Start game</a>
+            <div class="basketballBoard">
+                <h1>Memory Game</h1>
+                <a href="#pageGame" class="ballButton"><span>Start game</span></a>
+                <div class="smallBoard"></div>
+            </div>
         </div>
 
         <!-- GAME BOARD -->
@@ -25,7 +29,7 @@
         <div class="slide-score" id="pageScore">
             <a href="#pageGame" class="button">New game</a>
         </div>
-        
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
