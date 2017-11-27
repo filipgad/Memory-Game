@@ -104,6 +104,7 @@ $(document).ready(function () {
 
         // create cards and put into game board
         for (var _i2 = 0; _i2 < numberOfCards; _i2++) {
+            var cardBox = $('<div>').addClass('cardBox');
             var card = $('<div>');
             card.addClass('card');
             card.addClass('front');
@@ -111,7 +112,8 @@ $(document).ready(function () {
             card.attr('data-card-type', boardOfCards[_i2]);
             card.attr('data-index', _i2);
 
-            gameBoard.append(card);
+            cardBox.append(card);
+            gameBoard.append(cardBox);
         }
 
         // event on clicked card

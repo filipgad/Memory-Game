@@ -32,6 +32,7 @@ $(document).ready(function() {
 
         // create cards and put into game board
         for(let i=0; i<numberOfCards; i++) {
+            const cardBox = $('<div>').addClass('cardBox');
             const card = $('<div>');
             card.addClass('card');
             card.addClass('front');
@@ -39,7 +40,8 @@ $(document).ready(function() {
             card.attr('data-card-type', boardOfCards[i]);
             card.attr('data-index', i);
 
-            gameBoard.append(card);
+            cardBox.append(card);
+            gameBoard.append(cardBox);
         }
 
         // event on clicked card
