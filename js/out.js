@@ -128,8 +128,11 @@ $(document).ready(function () {
 
             if (!activeCards[0] || activeCards[0].data('index') != card.data('index')) {
                 activeCards.push(card);
-                card.removeClass('front');
-                card.addClass('back');
+                card.css('transform', 'rotateY(360deg)');
+                setTimeout(function () {
+                    card.removeClass('front');
+                    card.addClass('back');
+                }, 200);
             }
 
             if (activeCards.length === 2) {
@@ -141,10 +144,11 @@ $(document).ready(function () {
                 } else {
                     setTimeout(function () {
                         resetCards();
-                    }, 1000);
+                    }, 2000);
                 }
 
                 tries++;
+                scoreInfo(tries);
             }
         }
     };
@@ -169,9 +173,11 @@ $(document).ready(function () {
 
     // reset wrong pair
     var resetCards = function resetCards() {
+        activeCards[0].css('transform', 'none');
         activeCards[0].removeClass('back');
         activeCards[0].addClass('front');
 
+        activeCards[1].css('transform', 'none');
         activeCards[1].removeClass('back');
         activeCards[1].addClass('front');
 
@@ -180,11 +186,20 @@ $(document).ready(function () {
     };
 
     // score information
+    var scoreInfo = function scoreInfo(tries) {
+        var score = $('.score');
+        score.text('Score: ' + tries);
+    };
+
+    // game over, score
     var gameOver = function gameOver() {
         console.log('koniec gry');
     };
 
-    startGame();
+    // buttons event - start/restart/new game
+    $('.button').on('click', function () {
+        startGame();
+    });
 });
 
 /***/ })
