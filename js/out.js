@@ -88,6 +88,7 @@ $(document).ready(function () {
         correctPairs = 0;
 
         var gameBoard = $('#gameBoard').empty(); // clean game board
+        var score = $('.score').text('Score: ' + tries);
 
         // put card number into array
         for (var i = 0; i < numberOfCards; i++) {
@@ -146,9 +147,6 @@ $(document).ready(function () {
                         resetCards();
                     }, 2000);
                 }
-
-                tries++;
-                scoreInfo(tries);
             }
         }
     };
@@ -168,6 +166,8 @@ $(document).ready(function () {
 
             activeCards = new Array();
             canClick = true;
+            tries++;
+            scoreInfo(tries);
         });
     };
 
@@ -183,6 +183,8 @@ $(document).ready(function () {
 
         activeCards = new Array();
         canClick = true;
+        tries++;
+        scoreInfo(tries);
     };
 
     // score information
