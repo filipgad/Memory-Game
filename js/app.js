@@ -119,10 +119,21 @@ $(document).ready(function() {
 
     // game over, score
     const gameOver = () => {
-      console.log('koniec gry');
+      $('.slide-score').addClass('show');
+      $('.slide-game').removeClass('show');
+      $('#gameScore span').text(tries);
     }
 
     // buttons event - start/restart/new game
-    $('.button').on('click', function() {startGame()});
+    $('.button').on('click', function() {
+      $(this).parent().removeClass('show');
+      $('.slide-game').addClass('show');
+      startGame()
+    });
+
+    $('.smallBoard').on('click', function() {
+      $('.slide-game').addClass('show');
+      $(this).parent().parent().removeClass('show');
+    });
 
 });
