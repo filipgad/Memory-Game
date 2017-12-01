@@ -30,11 +30,11 @@ body {
     position: absolute;
     left:0;
     top:-300%;
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
+    -webkit-transition: 0.001s;
+    -moz-transition: 0.001s;
+    -ms-transition: 0.001s;
+    -o-transition: 0.001s;
+    transition: 0.001s;
 }
 
 [class^=slide-].show {
@@ -58,8 +58,8 @@ a {
     width: 70vw;
     height: 80vh;
     border: 20px solid #000;
-    position: relative;
     background-color: #EBEBEB;
+    position: relative;
     h1 {
       font-size: 700%;
       text-align: center;
@@ -104,6 +104,7 @@ a {
 /* GAME BOARD */
 #pageGame {
   @extend %pagesWidthAndHeight;
+  background-color: $bgColor;
   flex-direction: column;
   #gameBoard {
     position: relative;
@@ -195,4 +196,21 @@ a {
 /* GAME SCORE */
 #pageScore {
   @extend %pagesWidthAndHeight;
+  background-color: $bgColor;
+  flex-direction: column;
+  #gameScore {
+    width: 45vw;
+    height: 45vh;
+    background: url(../images/court.png) center center/100% 100% no-repeat;
+    opacity: 0.5;
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.40);
+    padding: 150px 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    h1 {
+      font-weight: bold;
+      font-size: 300%;
+      opacity: 1;
+    }
+  }
 }
