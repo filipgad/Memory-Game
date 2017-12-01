@@ -51,12 +51,12 @@ a {
     font-size: 700%;
     text-align: center;
     margin-top: 50px; }
-  #pageStart .basketballBoard .ballButton {
+  #pageStart .basketballBoard .ball {
     width: 20vw;
     height: 20vw;
     position: absolute;
-    top: 60%;
-    left: 35%;
+    top: 65%;
+    left: -15%;
     background: url(../images/ball.png) center center/contain no-repeat;
     z-index: 2;
     border-radius: 50%;
@@ -64,9 +64,6 @@ a {
     display: flex;
     justify-content: center;
     align-items: center; }
-    #pageStart .basketballBoard .ballButton span {
-      font-size: 300%;
-      color: #777887; }
   #pageStart .basketballBoard .smallBoard {
     width: 25vw;
     height: 25vh;
@@ -74,7 +71,15 @@ a {
     position: absolute;
     top: 50%;
     left: 30%;
-    z-index: 1; }
+    z-index: 1;
+    font-size: 300%;
+    color: #000;
+    text-align: center;
+    display: block;
+    padding-top: 50px; }
+    #pageStart .basketballBoard .smallBoard:hover {
+      border: 20px solid #CD3700;
+      color: #CD3700; }
 
 /* GAME BOARD */
 #pageGame {
