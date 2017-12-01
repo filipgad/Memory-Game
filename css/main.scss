@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Roboto');
 
 %pagesWidthAndHeight {
   width: 100vw;
@@ -22,7 +22,7 @@ $fontColor: #0D4F8B;
 body {
   background-color: $bgColor;
   color: $fontColor;
-  font-family: 'Baloo Bhaijaan', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
 [class^=slide-] {
@@ -42,7 +42,7 @@ body {
     top:0;
 }
 
-.slide-game {
+.slide-start {
     top:0; /* widoczny od początku */
 }
 
@@ -163,6 +163,27 @@ a {
 }
 .card-type-9.back {
   background: #fff url(../images/washington.png) center center/auto 90% no-repeat;
+}
+
+.score {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.boxButton {
+  display: block;
+  width: 200px;
+  height: 50px;
+  background-color: #CFCFCF;
+  font-size: 25px;
+  color: #7A7A7A;
+  border: 3px solid #7A7A7A;
+  text-align: center;
+  padding-top: 7px;
+  &:hover {
+    color: #CD3700;
+    border: 3px solid #CD3700;
+  }
 }
 
 /* GAME SCORE */
