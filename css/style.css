@@ -115,34 +115,34 @@ a {
   backface-visibility: hidden; }
 
 .card-type-0.back {
-  background: #fff url(../images/boston.png) center center/auto 90% no-repeat; }
+  background: url(../images/boston.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-1.back {
-  background: #fff url(../images/chicago.png) center center/auto 90% no-repeat; }
+  background: url(../images/chicago.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-2.back {
-  background: #fff url(../images/cleveland.png) center center/auto 90% no-repeat; }
+  background: url(../images/cleveland.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-3.back {
-  background: #fff url(../images/houston.png) center center/auto 90% no-repeat; }
+  background: url(../images/houston.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-4.back {
-  background: #fff url(../images/la_lakers.png) center center/auto 90% no-repeat; }
+  background: url(../images/la_lakers.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-5.back {
-  background: #fff url(../images/miami.png) center center/auto 90% no-repeat; }
+  background: url(../images/miami.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-6.back {
-  background: #fff url(../images/oklahoma.png) center center/auto 90% no-repeat; }
+  background: url(../images/oklahoma.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-7.back {
   background: #fff url(../images/san_antonio.png) center center/90% 90% no-repeat; }
 
 .card-type-8.back {
-  background: #fff url(../images/warriors.png) center center/auto 90% no-repeat; }
+  background: url(../images/warriors.png) #fff center center/auto 90% no-repeat; }
 
 .card-type-9.back {
-  background: #fff url(../images/washington.png) center center/auto 90% no-repeat; }
+  background: url(../images/washington.png) #fff center center/auto 90% no-repeat; }
 
 .score {
   margin-bottom: 10px;
