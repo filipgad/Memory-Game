@@ -85,13 +85,14 @@ $(document).ready(function() {
 
             correctPairs++;
             if (correctPairs >= numberOfCards / 2) {
+              tries++;
               gameOver();
+            } else {
+              activeCards = new Array();
+              canClick = true;
+              tries++;
+              scoreInfo(tries);
             }
-
-            activeCards = new Array();
-            canClick = true;
-            tries++;
-            scoreInfo(tries);
         });
     }
 
