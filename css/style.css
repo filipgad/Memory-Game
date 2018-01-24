@@ -50,7 +50,7 @@ a {
   #pageStart .basketballBoard h1 {
     font-size: 700%;
     text-align: center;
-    margin-top: 50px; }
+    margin-top: 10%; }
   #pageStart .basketballBoard .ball {
     width: 20vw;
     height: 20vw;
@@ -65,6 +65,9 @@ a {
     justify-content: center;
     align-items: center; }
   #pageStart .basketballBoard .smallBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25vw;
     height: 25vh;
     border: 20px solid #000;
@@ -73,10 +76,7 @@ a {
     left: 30%;
     z-index: 1;
     font-size: 300%;
-    color: #000;
-    text-align: center;
-    display: block;
-    padding-top: 50px; }
+    color: #000; }
     #pageStart .basketballBoard .smallBoard:hover {
       border: 20px solid #CD3700;
       color: #CD3700; }
