@@ -103,15 +103,9 @@ a {
   cursor: pointer;
   position: relative;
   border: 2px solid #858585;
-  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.4); }
-
-.front {
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.4);
   background: #fff url(../images/nba.png) center center/20% 90% no-repeat;
-  transition: .6s transform linear;
-  backface-visibility: hidden; }
-
-.back {
-  transition: .6s transform linear;
+  transition: .6s linear;
   backface-visibility: hidden; }
 
 .card-type-0.back {
@@ -177,5 +171,4 @@ a {
     text-align: center; }
     #pageScore #gameScore h1 {
       font-weight: bold;
-      font-size: 300%;
-      opacity: 1; }
+      font-size: 300%; }
