@@ -128,7 +128,7 @@ a {
   cursor: pointer;
   position: relative;
   border: 2px solid #858585;
-  box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.40);
+  box-shadow: 0px 0px 15px 1px rgba(0,0,0,.4);
   background: #fff url(../images/nba.png) center center/20% 90% no-repeat;
   transition: .6s linear;
   backface-visibility: hidden;
@@ -215,7 +215,7 @@ a {
     height: 45vh;
     background: url(../images/court.png) center center/100% 100% no-repeat;
     opacity: 0.5;
-    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.40);
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,.4);
     padding: 150px 20px;
     margin-bottom: 50px;
     text-align: center;
