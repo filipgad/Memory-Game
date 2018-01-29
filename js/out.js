@@ -71,6 +71,7 @@
 
 
 $(document).ready(function () {
+    var _this = this;
 
     var numberOfCards = 20;
     var boardOfCards = [];
@@ -88,7 +89,7 @@ $(document).ready(function () {
         correctPairs = 0;
 
         var gameBoard = $('#gameBoard').empty(); // clean game board
-        var score = $('.score').text('Score: ' + tries);
+        scoreInfo(tries);
 
         // put card number into array
         for (var i = 0; i < numberOfCards; i++) {
@@ -108,7 +109,6 @@ $(document).ready(function () {
             var cardBox = $('<div>').addClass('cardBox');
             var card = $('<div>');
             card.addClass('card');
-            card.addClass('front');
             card.addClass('card-type-' + boardOfCards[_i2]);
             card.attr('data-card-type', boardOfCards[_i2]);
             card.attr('data-index', _i2);
@@ -130,57 +130,49 @@ $(document).ready(function () {
             if (!activeCards[0] || activeCards[0].data('index') != card.data('index')) {
                 activeCards.push(card);
                 card.css('transform', 'rotateY(360deg)');
-                setTimeout(function () {
-                    card.removeClass('front');
-                    card.addClass('back');
-                }, 200);
+                card.toggleClass('back');
             }
 
             if (activeCards.length === 2) {
                 canClick = false;
                 if (activeCards[0].data('card-type') == activeCards[1].data('card-type')) {
                     setTimeout(function () {
-                        deleteCorrectPair();
+                        deleteCorrectPair(activeCards[0], activeCards[1]);
                     }, 1000);
                 } else {
                     setTimeout(function () {
-                        resetCards();
-                    }, 2000);
+                        resetCards(activeCards[0], activeCards[1]);
+                    }, 1000);
                 }
             }
         }
     };
 
     // remove correct pair
-    var deleteCorrectPair = function deleteCorrectPair() {
-        activeCards[0].fadeOut(function () {
-            $(this).remove();
+    var deleteCorrectPair = function deleteCorrectPair(card1, card2) {
+        card1.fadeOut(function () {
+            $(_this).remove();
         });
-        activeCards[1].fadeOut(function () {
-            $(this).remove();
+        card2.fadeOut(function () {
+            $(_this).remove();
+        });
 
-            correctPairs++;
-            if (correctPairs >= numberOfCards / 2) {
-                tries++;
-                gameOver();
-            } else {
-                activeCards = new Array();
-                canClick = true;
-                tries++;
-                scoreInfo(tries);
-            }
-        });
+        correctPairs++;
+        if (correctPairs >= numberOfCards / 2) {
+            tries++;
+            gameOver(tries);
+        } else {
+            activeCards = new Array();
+            canClick = true;
+            tries++;
+            scoreInfo(tries);
+        }
     };
 
     // reset wrong pair
-    var resetCards = function resetCards() {
-        activeCards[0].css('transform', 'none');
-        activeCards[0].removeClass('back');
-        activeCards[0].addClass('front');
-
-        activeCards[1].css('transform', 'none');
-        activeCards[1].removeClass('back');
-        activeCards[1].addClass('front');
+    var resetCards = function resetCards(card1, card2) {
+        card1.css('transform', 'none').toggleClass('back');
+        card2.css('transform', 'none').toggleClass('back');
 
         activeCards = new Array();
         canClick = true;
@@ -190,12 +182,11 @@ $(document).ready(function () {
 
     // score information
     var scoreInfo = function scoreInfo(tries) {
-        var score = $('.score');
-        score.text('Score: ' + tries);
+        var score = $('.score').text('Score: ' + tries);
     };
 
     // game over, score
-    var gameOver = function gameOver() {
+    var gameOver = function gameOver(tries) {
         $('.slide-score').addClass('show');
         $('.slide-game').removeClass('show');
         $('#gameScore span').text(tries);

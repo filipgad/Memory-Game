@@ -16,7 +16,7 @@ $(document).ready(function() {
         correctPairs = 0;
 
         const gameBoard = $('#gameBoard').empty(); // clean game board
-        const score = $('.score').text('Score: ' + tries);
+        scoreInfo(tries);
 
         // put card number into array
         for(let i=0; i<numberOfCards; i++) {
@@ -36,7 +36,6 @@ $(document).ready(function() {
             const cardBox = $('<div>').addClass('cardBox');
             const card = $('<div>');
             card.addClass('card');
-            card.addClass('front');
             card.addClass('card-type-'+boardOfCards[i]);
             card.attr('data-card-type', boardOfCards[i]);
             card.attr('data-index', i);
@@ -46,7 +45,7 @@ $(document).ready(function() {
         }
 
         // event on clicked card
-        $('.card').on('click', function() {clickedCard($(this))});
+        $('.card').on('click', function() { clickedCard( $(this) ) });
     }
 
     // compare clicked cards
@@ -56,55 +55,45 @@ $(document).ready(function() {
             if (!activeCards[0] || (activeCards[0].data('index') != card.data('index'))) {
                 activeCards.push(card);
                 card.css('transform', 'rotateY(360deg)');
-                setTimeout( () => {
-                  card.removeClass('front');
-                  card.addClass('back');
-                }, 200);
+                card.toggleClass('back');
             }
 
             if (activeCards.length === 2) {
                 canClick = false;
                 if (activeCards[0].data('card-type') == activeCards[1].data('card-type')) {
                   setTimeout( () => {
-                    deleteCorrectPair()
+                    deleteCorrectPair(activeCards[0], activeCards[1])
                   }, 1000);
                 } else {
                   setTimeout( () => {
-                    resetCards()
-                  }, 2000);
+                    resetCards(activeCards[0], activeCards[1])
+                  }, 1000);
                 }
             }
         }
     }
 
     // remove correct pair
-    const deleteCorrectPair = () => {
-        activeCards[0].fadeOut( function() {$(this).remove()} );
-        activeCards[1].fadeOut( function() {
-            $(this).remove();
+    const deleteCorrectPair = (card1, card2) => {
+        card1.fadeOut( () => { $(this).remove() } );
+        card2.fadeOut( () => { $(this).remove() } );
 
-            correctPairs++;
-            if (correctPairs >= numberOfCards / 2) {
-              tries++;
-              gameOver();
-            } else {
-              activeCards = new Array();
-              canClick = true;
-              tries++;
-              scoreInfo(tries);
-            }
-        });
+        correctPairs++;
+        if (correctPairs >= numberOfCards / 2) {
+            tries++;
+            gameOver(tries);
+        } else {
+            activeCards = new Array();
+            canClick = true;
+            tries++;
+            scoreInfo(tries);
+        }
     }
 
     // reset wrong pair
-    const resetCards = () => {
-        activeCards[0].css('transform', 'none');
-        activeCards[0].removeClass('back');
-        activeCards[0].addClass('front');
-
-        activeCards[1].css('transform', 'none');
-        activeCards[1].removeClass('back');
-        activeCards[1].addClass('front');
+    const resetCards = (card1, card2) => {
+        card1.css('transform', 'none').toggleClass('back');
+        card2.css('transform', 'none').toggleClass('back');
 
         activeCards = new Array();
         canClick = true;
@@ -114,27 +103,26 @@ $(document).ready(function() {
 
     // score information
     const scoreInfo = (tries) => {
-      const score = $('.score');
-      score.text('Score: ' + tries);
+        const score = $('.score').text('Score: ' + tries);
     }
 
     // game over, score
-    const gameOver = () => {
-      $('.slide-score').addClass('show');
-      $('.slide-game').removeClass('show');
-      $('#gameScore span').text(tries);
+    const gameOver = (tries) => {
+        $('.slide-score').addClass('show');
+        $('.slide-game').removeClass('show');
+        $('#gameScore span').text(tries);
     }
 
     // buttons event - start/restart/new game
     $('.button').on('click', function() {
-      $(this).parent().removeClass('show');
-      $('.slide-game').addClass('show');
-      startGame()
+        $(this).parent().removeClass('show');
+        $('.slide-game').addClass('show');
+        startGame();
     });
 
     $('.smallBoard').on('click', function() {
-      $('.slide-game').addClass('show');
-      $(this).parent().parent().removeClass('show');
+        $('.slide-game').addClass('show');
+        $(this).parent().parent().removeClass('show');
     });
 
 });
