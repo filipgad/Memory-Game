@@ -97,25 +97,25 @@ $(document).ready(function () {
         }
 
         // shuffle cards numbers
-        for (var _i = numberOfCards - 1; _i > 0; _i--) {
-            var swap = Math.floor(Math.random() * _i);
-            var temp = boardOfCards[_i];
-            boardOfCards[_i] = boardOfCards[swap];
+        boardOfCards.forEach(function (elem, index) {
+            var swap = Math.floor(Math.random() * index);
+            var temp = boardOfCards[index];
+            boardOfCards[index] = boardOfCards[swap];
             boardOfCards[swap] = temp;
-        }
+        });
 
         // create cards and put into game board
-        for (var _i2 = 0; _i2 < numberOfCards; _i2++) {
+        boardOfCards.forEach(function (elem, index) {
             var cardBox = $('<div>').addClass('cardBox');
             var card = $('<div>');
             card.addClass('card');
-            card.addClass('card-type-' + boardOfCards[_i2]);
-            card.attr('data-card-type', boardOfCards[_i2]);
-            card.attr('data-index', _i2);
+            card.addClass('card-type-' + boardOfCards[index]);
+            card.attr('data-card-type', boardOfCards[index]);
+            card.attr('data-index', index);
 
             cardBox.append(card);
             gameBoard.append(cardBox);
-        }
+        });
 
         // event on clicked card
         $('.card').on('click', function () {
