@@ -35,9 +35,8 @@ $(document).ready(function() {
         boardOfCards.forEach( (elem, index) => {
             const cardBox = $('<div>').addClass('cardBox');
             const card = $('<div>');
-            card.addClass('card');
-            card.addClass('card-type-'+boardOfCards[index]);
-            card.attr('data-card-type', boardOfCards[index]);
+            card.addClass(`card card-type-${elem}`);
+            card.attr('data-card-type', elem);
             card.attr('data-index', index);
 
             cardBox.append(card);
@@ -54,8 +53,7 @@ $(document).ready(function() {
 
             if (!activeCards[0] || (activeCards[0].data('index') != card.data('index'))) {
                 activeCards.push(card);
-                card.css('transform', 'rotateY(360deg)');
-                card.toggleClass('back');
+                card.css('transform', 'rotateY(360deg)').toggleClass('back');
             }
 
             if (activeCards.length === 2) {
