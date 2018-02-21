@@ -118,9 +118,9 @@ $(document).ready(function() {
         startGame();
     });
 
-    $('.smallBoard').on('click', function() {
-        $('.slide-game').addClass('show');
-        $(this).parent().parent().removeClass('show');
-    });
+    // $('.smallBoard').on('click', function() {
+    //     $('.slide-game').addClass('show');
+    //     $(this).parent().parent().removeClass('show');
+    // });
 
 });
