@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wp": "./node_modules/.bin/webpack",
-    "serve": "./node_modules/.bin/webpack-dev-server --hot"
+    "serve": "./node_modules/.bin/webpack-dev-server"
   },
-  "author": "Dariusz Luber",
+  "author": "Filip Godziński",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
