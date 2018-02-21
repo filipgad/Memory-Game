@@ -1,117 +1,79 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Roboto');
 
-%pagesWidthAndHeight {
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-$bgColor: #CFCFCF;
-$fontColor: #0D4F8B;
-$cardStyle: #fff center center/auto 90% no-repeat;
-
+$cardStyle: #fff center center/contain no-repeat;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: $bgColor;
-  color: $fontColor;
   font-family: 'Roboto', sans-serif;
+  letter-spacing: 3px;
 }
 
-[class^=slide-] {
-    z-index:1;
-    position: absolute;
-    left:0;
-    top:-300%;
-    -webkit-transition: 0.001s;
-    -moz-transition: 0.001s;
-    -ms-transition: 0.001s;
-    -o-transition: 0.001s;
-    transition: 0.001s;
+#container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  background: url(../images/bg_main.jpg) 20% 0%/cover no-repeat;
 }
 
-[class^=slide-].show {
-    z-index:2;
-    top:0;
+.button {
+    padding: 5vmin 8vmin;
+    font-size: 6vmin;
+    text-decoration: none;
+    background-color: #000;
+    color: #edf0e7;
+    box-shadow: 0px 13px 54px 1px rgba(0,0,0,0.8);
+    &:hover {
+        background-color: lighten(#000, 10%);
+    }
 }
 
-.slide-start {
-    top:0; /* widoczny od początku */
-}
-
-a {
-  text-decoration: none;
-  color: #FF8000;
+.show {
+  display: flex;
 }
 
 /* GAME MENU */
 #pageStart {
-  @extend %pagesWidthAndHeight;
-  .basketballBoard {
-    width: 70vw;
-    height: 80vh;
-    border: 20px solid #000;
-    background-color: #EBEBEB;
-    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     h1 {
-      font-size: 700%;
-      text-align: center;
-      margin-top: 10%;
+        width: 100%;
+        font-size: 10vmin;
+        text-align: center;
+        border: 1vmin solid #000;
+        padding: 10vmin 0;
+        background-color: rgba(250,250,250,.2);
     }
-    .ball {
-      width: 20vw;
-      height: 20vw;
-      position: absolute;
-      top: 65%;
-      left: -15%;
-      background: url(../images/ball.png) center center/contain no-repeat;
-      z-index: 2;
-      border-radius: 50%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .smallBoard {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 25vw;
-      height: 25vh;
-      border: 20px solid #000;
-      position: absolute;
-      top: 50%;
-      left: 30%;
-      z-index: 1;
-      font-size: 300%;
-      color: #000;
-      &:hover {
-        border: 20px solid #CD3700;
-        color: #CD3700;
-      }
-    }
-  }
 }
 
 /* GAME BOARD */
 #pageGame {
-  @extend %pagesWidthAndHeight;
-  background-color: $bgColor;
-  flex-direction: column;
-  #gameBoard {
-    position: relative;
-    height: 70%;
-    width: 80%;
-  }
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0,0,0,.2);
+    #gameBoard {
+        width: 95vw;
+        height: 65vh;
+        max-width: 1000px;
+        max-height: 1000px;
+    }
+    .button {
+        font-size: 5vmin;
+    }
 }
 
 .cardBox {
@@ -119,39 +81,18 @@ a {
   margin: 0.5%;
   height: 21%;
   display: inline-block;
-  position: relative;
 }
 
 .card {
   width: 100%;
   height: 100%;
   cursor: pointer;
-  position: relative;
   border: 2px solid #858585;
   box-shadow: 0px 0px 15px 1px rgba(0,0,0,.4);
-  background: #fff url(../images/nba.png) center center/20% 90% no-repeat;
+  background: #fff url(../images/nba.png) center center/contain no-repeat;
   transition: .6s linear;
   backface-visibility: hidden;
 }
-
-// .front {
-//   background: #fff url(../images/nba.png) center center/20% 90% no-repeat;
-//   transition: .6s transform linear;
-//   backface-visibility: hidden;
-// }
-
-// .back {
-//   width: 100%;
-//   height: 100%;
-//   cursor: pointer;
-//   position: relative;
-//   border: 2px solid #858585;
-//   box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.40);
-//   // transition: .6s transform linear;
-//   // backface-visibility: hidden;
-//   // transition: .6s transform linear;
-//   // backface-visibility: hidden;
-// }
 
 .card-type-0.back {
   background: url(../images/boston.png) $cardStyle;
@@ -185,43 +126,23 @@ a {
 }
 
 .score {
-  margin-bottom: 10px;
-  font-size: 30px;
-}
-
-.boxButton {
-  display: block;
-  width: 200px;
-  height: 50px;
-  background-color: #CFCFCF;
-  font-size: 25px;
-  color: #7A7A7A;
-  border: 3px solid #7A7A7A;
-  text-align: center;
-  padding-top: 7px;
-  &:hover {
-    color: #CD3700;
-    border: 3px solid #CD3700;
-  }
+  font-size: 6vmin;
 }
 
 /* GAME SCORE */
 #pageScore {
-  @extend %pagesWidthAndHeight;
-  background-color: $bgColor;
-  flex-direction: column;
-  #gameScore {
-    width: 45vw;
-    height: 45vh;
-    background: url(../images/court.png) center center/100% 100% no-repeat;
-    opacity: 0.5;
-    box-shadow: 0px 0px 15px 3px rgba(0,0,0,.4);
-    padding: 150px 20px;
-    margin-bottom: 50px;
-    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     h1 {
-      font-weight: bold;
-      font-size: 300%;
+        font-size: 6vmin;
+        text-align: center;
+        border: 1vmin solid #000;
+        padding: 10vmin 5vmin;
+        background-color: rgba(250,250,250,.2);
     }
-  }
 }
