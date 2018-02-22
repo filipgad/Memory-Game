@@ -196,11 +196,6 @@ $(document).ready(function () {
         $('.slide-game').addClass('show');
         startGame();
     });
-
-    // $('.smallBoard').on('click', function() {
-    //     $('.slide-game').addClass('show');
-    //     $(this).parent().parent().removeClass('show');
-    // });
 });
 
 /***/ })
