@@ -15,7 +15,7 @@ $(document).ready(function() {
         tries = 0;
         correctPairs = 0;
 
-        const gameBoard = $('#gameBoard').empty(); // clean game board
+        const gameBoard = $('.game__board').empty(); // clean game board
         scoreInfo(tries);
 
         // put card number into array
@@ -33,9 +33,9 @@ $(document).ready(function() {
 
         // create cards and put into game board
         boardOfCards.forEach( (elem, index) => {
-            const cardBox = $('<div>').addClass('cardBox');
+            const cardBox = $('<div>').addClass('game__board--cardBox');
             const card = $('<div>');
-            card.addClass(`card card-type-${elem}`);
+            card.addClass(`game__board--card card-type-${elem}`);
             card.attr('data-card-type', elem);
             card.attr('data-index', index);
 
@@ -44,12 +44,20 @@ $(document).ready(function() {
         });
 
         // event on clicked card
-        $('.card').on('click', function() { clickedCard( $(this) ) });
+        $('.game__board--card').on('click', function() { clickedCard( $(this) ) });
     }
 
     // compare clicked cards
     const clickedCard = (card) => {
         if (canClick) {
+            
+            // const transformCard = { 
+            //     "transform": "rotateY(360deg)", 
+            //     "-moz-transform": "rotateY(360deg)", 
+            //     "-ms-transform": "rotateY(360deg)",
+            //     "-webkit-transform": "rotateY(360deg)",
+            //     "-o-transform": "rotateY(360deg)"
+            // }
 
             if (!activeCards[0] || (activeCards[0].data('index') != card.data('index'))) {
                 activeCards.push(card);
@@ -101,20 +109,20 @@ $(document).ready(function() {
 
     // score information
     const scoreInfo = (tries) => {
-        const score = $('.score').text('Score: ' + tries);
+        const score = $('.game__score').text('Score: ' + tries);
     }
 
     // game over, score
     const gameOver = (tries) => {
-        $('.slide-score').addClass('show');
-        $('.slide-game').removeClass('show');
-        $('#gameScore span').text(tries);
+        $('.slide__score').addClass('show');
+        $('.slide__game').removeClass('show');
+        $('#score__board span').text(tries);
     }
 
     // buttons event - start/restart/new game
-    $('.button').on('click', function() {
+    $('.game__button').on('click', function() {
         $(this).parent().removeClass('show');
-        $('.slide-game').addClass('show');
+        $('.slide__game').addClass('show');
         startGame();
     });
 
