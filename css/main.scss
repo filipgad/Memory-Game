@@ -34,7 +34,7 @@ body {
   background: url(../images/bg_main.jpg) 20% 0%/cover no-repeat;
 }
 
-.button {
+.game__button {
     padding: 5vmin 8vmin;
     font-size: 6vmin;
     text-decoration: none;
@@ -48,11 +48,11 @@ body {
     }
 }
 
-[class^="slide-"] {
+[class^="slide__"] {
     top: -300%;
 }
 
-[class^="slide-"].show {
+[class^="slide__"].show {
   top: 0;
   left: 0;
   z-index: 5;
@@ -69,7 +69,7 @@ body {
 }
 
 /* GAME MENU */
-#pageStart {
+#page__start {
     @extend %flexBox;
     h1 {
         width: 90%;
@@ -83,34 +83,34 @@ body {
 }
 
 /* GAME BOARD */
-#pageGame {
+#page__game {
     @extend %flexBox;
     background-color: rgba(0,0,0,.3);
-    #gameBoard {
+    .game__board {
         width: 95vw;
         height: 65vh;
         max-width: 1000px;
         max-height: 1000px;
     }
-    .score {
+    .game__score {
         font-size: 6vmin;
     }
     @media #{$tablet}, #{$desktop} {
-        .button {
+        .game__button {
             font-size: 4vmin;
             padding: 3vmin 5vmin;
         }
     }
 }
 
-.cardBox {
+.game__board--cardBox {
     width: 19%;
     margin: 0.5%;
     height: 21%;
     display: inline-block;
 }
 
-.card {
+.game__board--card {
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -119,8 +119,10 @@ body {
     background: #fff url(../images/nba.png) center center/contain no-repeat;
     transition: .6s linear;
     backface-visibility: hidden;
-    &:hover {
-        border: 2px solid #de0000;
+    @media #{$desktop} {
+        &:hover {
+            border: 2px solid #de0000;
+        }
     }
 }
 
@@ -133,7 +135,7 @@ body {
 }
 
 /* GAME SCORE */
-#pageScore {
+#page__score {
     @extend %flexBox;
     h1 {
         font-size: 6vmin;
@@ -143,7 +145,7 @@ body {
         background-color: rgba(250,250,250,.2);
     }
     @media #{$tablet}, #{$desktop} {
-        .button {
+        .game__button {
             font-size: 4vmin;
             padding: 3vmin 5vmin;
         }
